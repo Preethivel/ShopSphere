@@ -1,0 +1,10 @@
+### Register a new user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+    "fullName": "Preethi P",
+    "email": "preethi@shopsphere.com",
+    "password": "preethi123",
+    "role": "BUYER"
+}
