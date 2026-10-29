@@ -1,3 +1,4 @@
+
 package com.shopsphere.shopsphere.service;
 
 import com.shopsphere.shopsphere.dto.RegisterRequest;
@@ -7,12 +8,16 @@ import com.shopsphere.shopsphere.model.User;
 import com.shopsphere.shopsphere.repository.UserRepository;
 import com.shopsphere.shopsphere.security.JwtService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService{
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -78,5 +83,15 @@ public class UserService {
 
         // Step 5 — Return token + user info
         return new AuthResponse(token, user.getFullName(), user.getEmail(), user.getRole());
+    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return org.springframework.security.core.userdetails.User
+            .withUsername(user.getEmail())
+            .password(user.getPasswordHash())
+            .roles(user.getRole())
+            .build();
     }
 }

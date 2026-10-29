@@ -19,12 +19,8 @@ public class UserController {
     // POST http://localhost:8080/api/auth/register
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        try {
-            AuthResponse response = userService.register(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        AuthResponse response = userService.register(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     // POST http://localhost:8080/api/auth/login
@@ -32,18 +28,7 @@ public class UserController {
     // We verify and return JWT token
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        try {
-            AuthResponse response = userService.login(request);
-
-            // 200 OK = standard response for successful login
-            return ResponseEntity.ok(response);
-
-        } catch (RuntimeException e) {
-
-            // Wrong email or password = 401 Unauthorized
-            // Never tell user which one was wrong — security best practice
-            // "Invalid credentials" not "wrong password" or "email not found"
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-    }
+        AuthResponse response = userService.login(request);
+        return ResponseEntity.ok(response);
+}
 }

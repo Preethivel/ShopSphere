@@ -1,10 +1,3 @@
-### Register a new user
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-    "fullName": "Preethi P",
-    "email": "preethi@shopsphere.com",
-    "password": "preethi123",
-    "role": "BUYER"
-}
+### Test protected route with token
+GET http://localhost:8080/api/users
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwcmVldGhpMkBzaG9wc3BoZXJlLmNvbSIsInJvbGUiOiJCVVlFUiIsImlhdCI6MTc5MzI2OTAwOSwiZXhwIjoxNzkzMzU1NDA5fQ.2Vsl-Qcz0QFYGteQsAwwkU7M8vK2GsQH9zoU7NmHyCOMLk9peN-PdFK48xrkSO8B
