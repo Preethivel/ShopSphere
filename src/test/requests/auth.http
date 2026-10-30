@@ -1,3 +1,2 @@
-### Test protected route with token
-GET http://localhost:8080/api/users
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwcmVldGhpMkBzaG9wc3BoZXJlLmNvbSIsInJvbGUiOiJCVVlFUiIsImlhdCI6MTc5MzI2OTAwOSwiZXhwIjoxNzkzMzU1NDA5fQ.2Vsl-Qcz0QFYGteQsAwwkU7M8vK2GsQH9zoU7NmHyCOMLk9peN-PdFK48xrkSO8B
+### Get Product by Slug
+GET http://localhost:8080/api/products/zanskar-joint-support-supplement
