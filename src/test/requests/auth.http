@@ -1,3 +1,3 @@
-### Add to Cart
-DELETE http://localhost:8080/api/cart/remove/1
+### Place Order
+PUT http://localhost:8080/api/orders/1/cancel
 Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwcmVldGhpMkBzaG9wc3BoZXJlLmNvbSIsInJvbGUiOiJCVVlFUiIsImlhdCI6MTc5MzQ0MTc4NCwiZXhwIjoxNzkzNTI4MTg0fQ.9-nh4fiD-tNwU3CrgyNHGRpkPPmc4RqrSnejnf_cFc6dClTY2n5VZKGJKewI9s09
